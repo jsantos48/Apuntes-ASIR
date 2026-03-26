@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+h1 {
+    font-family: "MedievalSharp";
+    size: 30px;
+    background-color: black;
+    color: white;
+    
+}
+#p1 {
+    color: white;
+    text-decoration: underline;
+    background-color: black;
+    font-family: "MedievalSharp";
+    background-position: center;
+}
+ul {
+    list-style-type:square ;
+    font-family: "MedievalSharp";
+    background-color: black;
+    color: white;
+    background-position: center;
+}
+p {
+    background-color: black;
+    color: white;
+    font-family: "MedievalSharp";
+    background-position: center;
+}
+html {
+    background-image: url(../../../../../../home/alumno/Imágenes/descarga.jpeg);
+}

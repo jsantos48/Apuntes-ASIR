@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Feedback</title>
+</head>
+<body>
+    <div id="contenedor-formulario">
+        <header id="titulos">
+            <h1>¡Únete a nuestra comunidad!</h1>
+            <h2>Formulario de Reseña de producto</h2>
+            <p>Eutod et auitilacto ex de comunida de pistro de lesidos</p>
+        </header>
+
+        <form>
+            <div class="seccion">
+                <label for="producto">Nombre del producto</label>
+                <input type="text" id="producto" name="nombrepr" placeholder="Nombre del producto">
+            </div>
+
+            <div class="seccion">
+                <label for="valoracion">Valoración</label>
+                <select id="valoracion" name="valoracion">
+                    <option value="" disabled selected hidden>Selecciona una opción</option>
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+            </div>
+
+            <div class="seccion">
+                <label for="comentario">Comentario</label>
+                <textarea id="comentario" name="comentario" placeholder="Escribe tu opinión aquí..."></textarea>
+            </div>
+
+            <div class="seccion">
+                <label>Recomendación</label>
+                <div class="grupo-radio">
+                    <label><input type="radio" name="recomendacion" value="si"> Si</label>
+                    <label><input type="radio" name="recomendacion" value="no"> No</label>
+                </div>
+            </div>
+
+            <div class="seccion">
+                <label for="correo">Correo Electrónico</label>
+                <input type="email" id="correo" name="correo" placeholder="nombre@email.com">
+            </div>
+
+            <div id="botones">
+                <button type="submit" id="enviar">Enviar Reseña</button>
+                <button type="reset" id="cancelar">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

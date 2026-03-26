@@ -1,0 +1,149 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #aebcc8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.contenedor-principal {
+    width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+.header-azul {
+    background-color: #202d3d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-azul h1 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.formulario {
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.subtitulo {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+input:required, select:required, textarea:required {
+    border-left: 3px solid #202d3d;
+}
+
+input[type="email"]:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+}
+
+input[type="email"]:valid:not(:placeholder-shown) {
+    border-color: #2ecc71;
+}
+
+.fila-radio {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.opciones-radio label {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.seccion-email {
+    background-color: #202d3d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.seccion-email label {
+    color: white;
+    
+}
+
+.seccion-email input {
+    width: 93%;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-enviar {
+    background-color: #0084fe;
+    color: white;
+}
+
+.btn-enviar:hover {
+    background-color: rgb(0, 68, 141);
+}
+
+.btn-cancelar {
+    background-color: #94a3b8;
+    color: white;
+}
+
+.btn-cancelar:hover {
+    background-color: #64748b;
+}

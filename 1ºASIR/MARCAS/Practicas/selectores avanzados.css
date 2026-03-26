@@ -1,0 +1,88 @@
+body {
+    margin: 35px;
+    background-color:rgb(230, 235, 241);
+}
+
+
+div h1 {
+    text-align: center;
+    padding: 0.75em;
+    text-shadow: 2.5px 4px 4px rgb(66, 66, 68);
+    color: rgb(55, 55, 126);
+    font-family: sans-serif;
+    font-size: 29px;
+}
+
+div hr:first-of-type {
+    width: 78%;
+    border-top: 1.3px solid;
+}
+
+div div {
+    text-align: right;
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+    font-family: sans-serif;
+    font-size: small;
+
+}
+
+div h2 {
+    font-size: 1.3em;
+    font-family: sans-serif;
+}
+
+div h2:first-of-type {
+    text-align: right;
+    color: rgb(51, 51, 116);
+    padding-bottom: 0.1em;
+    font-size: 20px;
+}  
+
+div h2:last-of-type {
+    padding-top: 0.5em;
+    text-align: left;
+    color: rgb(51, 51, 116);
+    font-size: 20px;
+}
+
+div p {
+    font-family: sans-serif;
+    font-size: small;
+    text-align: justify;
+    
+}
+
+div p:first-of-type {
+    font-style: italic;
+}
+
+div p::first-letter {
+    color: rgb(51, 51, 116);
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+div p:nth-of-type(2) {
+    position: relative;
+    padding-left: 15px;
+}
+
+div p:nth-of-type(2)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: rgb(58, 58, 143);
+    display: block;
+}
+
+
+div p:last-of-type {
+    font-weight: bold;
+}   
+
+
+

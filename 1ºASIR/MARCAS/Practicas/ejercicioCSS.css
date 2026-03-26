@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    background: #edf2f7;
+    color: #2d3748;
+    padding: 2em;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+.card {
+    background: #fff;
+    padding: 1.5em;
+    border-radius: 0.75em;
+    box-shadow: 0 4px 12px black;
+}
+
+.header, .chapter {
+    flex: 40%;
+}

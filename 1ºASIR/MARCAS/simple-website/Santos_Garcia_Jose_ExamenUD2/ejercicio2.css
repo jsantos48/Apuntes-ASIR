@@ -1,0 +1,33 @@
+body {
+    font-family: 'gadugi', Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+h1 {
+    color: gold;
+    text-align: center;
+}
+h1::placeholder{
+    font-size: 3em;
+}
+.post {
+    border: 20px;
+    border-color: white;
+}
+.post h2{
+    color: white;
+}
+.contenido {
+    color: white;
+}
+.anuncio {
+    border: 2px;
+    border-color: gold;
+}
+.anuncio h2{
+    text-align: right;
+    color: white;
+}
+#premium {
+    color: gold;
+}

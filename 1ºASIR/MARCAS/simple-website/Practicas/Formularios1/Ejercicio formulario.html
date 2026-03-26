@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registro Tuenti</title>
+</head>
+<body>
+    <header class="logo-header">
+        <img src="/Practicas/Formularios1/descarga.png" alt="Tuenti">
+    </header>
+
+    <main class="white-box">
+        <div class="top-row">
+            <h1>Únete a Tuenti <span class="subtitle">Todos los campos son obligatorios</span></h1>
+           <div class="lang-wrapper">
+        <select name="idioma" class="lang-selector">
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+        </select>
+        </div>
+        </div>
+
+        <form action="respuesta.html" method="post">
+            <div class="form-row">
+                <label>Nombre</label>
+                <div class="input-group">
+                    <input type="text" name="nombre" placeholder="Nombre">
+                    <input type="text" name="apellido" placeholder="Apellidos">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div class="form-row">
+                <label>Sexo</label>
+                <div class="radio-group">
+                    <input type="radio" id="hombre" name="sexo" value="Hombre">
+                    <label for="hombre" class="radio-label">Hombre</label>
+                    <input type="radio" id="mujer" name="sexo" value="Mujer">
+                    <label for="mujer" class="radio-label">Mujer</label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>Fecha de nacimiento</label>
+                <div class="select-group">
+                    <select name="dia">
+                        <option value="" disabled selected hidden>Dia</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                    </select>
+                    <select name="mes">
+                        <option value="" disabled selected hidden>Mes</option>
+                        <option value="enero">Enero</option>
+                        <option value="febrero">Febrero</option>
+                        <option value="marzo">Marzo</option>
+                        <option value="abril">Abril</option>
+                        <option value="mayo">Mayo</option>
+                        <option value="junio">Junio</option>
+                        <option value="julio">Julio</option>
+                        <option value="agosto">Agosto</option>
+                        <option value="septiembre">Septiembre</option>
+                        <option value="octubre">Ocutbre</option>
+                        <option value="noviembre">Noviembre</option>
+                        <option value="diciembre">Diciembre</option>                        
+                    </select>
+                    <select name="año">
+                        <option value="" disabled selected hidden>Año</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                    </select>
+                </div>
+                <p class="help-text">La edad mínima permitida es 14.</p>
+            </div>
+
+            <div class="form-row">
+                <label for="pass">Contraseña</label>
+                <div class="pass-wrapper">
+                    <input type="password" name="contraseña" id="pass">
+                    <div class="pass-strength"></div>
+                </div>
+                <a href="#" class="blue-link">Consejos para elegir una contraseña</a>
+            </div>
+
+            <div class="form-row">
+                <label>Número de móvil</label>
+                <div class="tel-group">
+                    <select name="prefijo"><option>+34 ES</option></select>
+                    <input type="tel" name="tlf">
+                </div>
+            </div>
+
+            <div class="terms-row">
+                <input type="checkbox" name="condiciones" id="cond">
+                <label for="cond">
+                    Aceptas las <a href="#">Condiciones de uso</a> y la <a href="#">Política de privacidad</a> de Tuenti y que Tuenti te envíe comunicaciones... Lee un resumen en el <a href="#">Decálogo de las Condiciones de uso</a>.
+                </label>
+            </div>
+
+            <div class="button-row">
+                <button type="submit" class="btn-tuenti">¡Disfruta de Tuenti!</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Pago - Goya</title>
+    <link rel="stylesheet" href="pagos.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <h1>FORMULARIO DE PAGO</h1>
+        <p class="nota">(Los campos obligatorios se han marcado con *)</p>
+
+        <form action="/pago Goya" method="post">
+            
+            <fieldset>
+                <legend>Información de contacto</legend>
+                
+                <div id="profesion">
+                    <fieldset class="sel-profesion">
+                        <legend>Profesión</legend>
+                        <label><input type="radio" name="profesion" value="profesor"> Profesor/a</label><br>
+                        <label><input type="radio" name="profesion" value="estudiante" checked> Estudiante</label><br>
+                        <label><input type="radio" name="profesion" value="otro"> Otro</label>
+                    </fieldset>
+                </div>
+
+                <div class="rellenar">
+                    <input type="text" id="nombre" name="nombre" required><br>
+                    <label for="nombre">Nombre<span class="rojo">*</span>: </label>
+                </div>
+
+                <div class="rellenar">
+                    <input type="email" id="correo" name="correo" required><br>
+                    <label for="correo">Correo<span class="rojo">*</span>: </label>                    
+                </div>
+
+                <div class="rellenar">
+                    <input type="tel" id="telefono" name="telefono" maxlength="12" pattern="[0-9]{3} [0-9]{2} [0-9]{2} [0-9]{2}" placeholder="555 55 55 55"><br>
+                    <label for="telefono">Número de teléfono<span class="rojo">*</span>: </label>                    
+                </div>
+
+                <div class="rellenar">
+                    <input type="password" id="pass" name="password" required><br>
+                    <label for="pass">Contraseña<span class="rojo">*</span>: </label>                    
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Información de pago</legend>
+                
+                <div class="rellenar">
+                    <select id="tipo_tarjeta" name="tipo_tarjeta">
+                        <option value="visa">Visa </option>
+                        <option value="mastercard">Mastercard</option>
+                    </select><br>
+                    <label for="tipo_tarjeta">Tipo de tarjeta: </label>                    
+                </div>
+
+                <div class="rellenar">
+                    <input type="text" id="num_tarjeta" name="num_tarjeta" required><br>
+                    <label for="num_tarjeta">Número de tarjeta<span class="rojo">*</span>:</label>                    
+                </div>
+
+                <div class="rellenar">
+                    <input type="date" id="caducidad" name="caducidad" min="2023-12-31" required><br>
+                    <label for="caducidad">Fecha de caducidad<span class="rojo">*</span>: </label>                    
+                </div>
+
+                <div class="rellenar">
+                    <select id="metodo" name="metodo" size="3">
+                        <option value="tarjeta">Tarjeta de crédito</option>
+                        <option value="paypal">Paypal</option>
+                        <option value="bizum">Bizum</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select><br>
+                    <label for="metodo">Método de pago preferido: </label>                    
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Añadir nueva dirección</legend>
+                <div class="rellenar">
+                    <select name="via">
+                        <option value="calle">Calle</option>
+                        <option value="avenida">Avenida</option>
+                        <option value="via">Vía</option>
+                    </select><br>
+                    <label for="via">Tipo de vía: </label>                    
+                </div>
+                <div class="rellenar">
+                    <input type="text" name="direccion" placeholder="Ej: Hermanos Garcia Noblejas"><br>
+                    <label for="direccion">Dirección: </label>                    
+                </div>
+                <div class="rellenar">
+                    <select name="poblacion">
+                        <option value="1" selected hidden disabled>Elige la población</option>
+                        <option value="2">Madrid</option>
+                        <option value="3">Albacete</option>
+                        <option value="4">Ferrol</option>
+                        <option value="5">Zaragoza</option>
+                        <option value="6">Cádiz</option>
+                    </select><br>
+                    <label for="poblacion">Población</label>                    
+                </div>
+                <div class="rellenar">
+                    <input type="tel" name="postal"><br>
+                    <label for="postal">Código postal:</label>                    
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Política de privacidad</legend>
+                <div class="pol-priv">
+                    <label>
+                        <input type="checkbox" name="privacidad" required> 
+                        He leído y acepto el Condiciones Generales de contratación y la Política de privacidad.
+                    </label>
+                </div>
+                <div class="pol-priv">
+                    <label>
+                        <input type="checkbox" name="no_news"> 
+                        NO quiero recibir newsletters ni comunicaciones comerciales de GOYAZON.
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="botones">
+                <button type="submit" class="btn-validar">VALIDAR EL PAGO</button>
+                <button type="reset" class="btn-cancelar">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

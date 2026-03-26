@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-lunes2.css">
+    <title>Formulario Pago</title>
+</head>
+<body>
+    <div class="contenedor">
+        <header>
+            <h1>FORMULARIO DE PAGO</h1>
+            <p class="obligatorio">(Los campos obligatorios se han marcado con *)</p>
+        </header>
+        <form action="/pagoGoya" method="post">
+            <fieldset class="separacion">
+                <legend>Información de contacto</legend>
+                <div class="profesion">
+                    <fieldset>
+                        <legend>Profesión</legend>
+                            <label><input type="radio" name="profesion" value="profesor"> Profesor/a</label>
+                            <br>
+                            <label><input type="radio" name="profesion" value="estudiante" checked>Estudiante</label>
+                            <br>
+                            <label><input type="radio" name="profesion" value="otro">Otro</label>
+                    </fieldset>
+                </div>
+                <div class="contacto">
+                    <label for="nombre">Nombre<span class="obligatorio">*</span>:</label>
+                    <input type="text" name="nombre" required>
+                </div>
+                <div class="contacto">
+                    <label for="correo">Correo<span class="obligatorio">*</span>:</label>
+                    <input type="email" name="correo" required>
+                </div>
+                <div class="contacto">                
+                    <label for="telefono">Número de teléfono<span class="obligatorio">*</span>:</label>
+                    <input type="tel" name="telefono" pattern="[0-9]{3} [0-9]{2} [0-9]{2} [0-9]{2}" maxlength="12" required>
+                </div>
+                <div class="contacto">
+                    <label for="contraseña">Contraseña<span class="obligatorio">*</span>:</label>
+                    <input type="password" name="contraseña" required>
+                </div>
+            </fieldset>
+            <fieldset class="separacion">
+                <legend>Información del pago</legend>
+                <div class="pago">
+                    <label for="tarjeta">Tipo de tarjeta:</label>
+                    <select name="tarjeta" id="tipo_tarjeta">
+                        <option value="visa">Visa</option>
+                        <option value="mastercard">MasterCard</option>
+                    </select>
+                </div>
+                <div class="pago">
+                    <label for="numero">Número de tarjeta<span class="obligatorio">*</span>:</label>
+                    <input type="tel" name="tarjeta" required>
+                </div>
+                <div class="pago">
+                    <label for="caducidad">Fecha de caducidad<span class="obligatorio">*</span>:</label>
+                    <input type="date" name="caducidad" min="2023-12-31" required>
+                </div>
+                <div class="pago">
+                    <label for="metodo">Método de pago preferido:</label>
+                    <select name="metodo" size="3">
+                        <option value="credito">Tarjeta de crédito</option>
+                        <option value="paypal">Paypal</option>
+                        <option value="bizum">Bizum</option>
+                        <option value="transferencia">Transferencia</option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="separacion">
+                <legend>Política de privacidad</legend>
+                <div class="privacidad">
+                    <label for="politica"><input type="checkbox" required>He leído y acepto las Condiciones Generales de contratación y la Política de privacidad</label>
+                </div>
+                <div class="privacidad">
+                    <label for="politica"><input type="checkbox">NO quiero recibir newsletters ni comunicaciones comerciales de GOYAZON</label>
+                </div>                
+            </fieldset>
+            <div class="botones">
+                <button id="btn-validar" type="submit">VALIDAR EL PAGO</button>
+                <button id="btn-cancelar" type="reset">CANCELAR</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
