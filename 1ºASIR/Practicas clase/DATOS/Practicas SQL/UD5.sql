@@ -298,6 +298,52 @@ UPDATE pedidos p
     JOIN clientes c2 ON c1.email = c2.email
 SET p.cliente_id = c2.id WHERE c1.id > c2.id;
 
+    
+-- COMPROBAMOS: 
+SELECT
+	p.id AS pedido_id,
+    p.cliente_id,
+    c1.id AS c1_id,
+    c1.email,
+    c2.id AS c2_id,
+    c2.email
+FROM pedidos p 
+	JOIN clientes c1 ON p.cliente_id = c1.id
+    JOIN clientes c2 ON c1.email = c2.email;
+    
+-- TODO OJ
+SELECT * FROM clientes;
+
 -- Eliminación de duplicados
 DELETE c1 FROM clientes c1 INNER JOIN clientes c2
 	ON c1.email = c2.email WHERE c1.id > c2.id;
+    
+-- ROLLBACK;
+COMMIT;
+
+-- 2 Blindaje: Añade las restricciones de FOREIGN KEY a productos y pedidos
+
+ALTER TABLE pedidos
+	ADD CONSTRAINT fk_pedidos_clientes FOREIGN KEY(cliente_id) REFERENCES clientes(id)
+    ON UPDATE CASCADE ON DELETE RESTRICT;
+SELECT * FROM pedidos WHERE cliente_id NOT IN (SELECT id FROM clientes);
+-- este constraint ha fallado porque hay pedidos que los han hecho clientes que no existen.
+-- CONCLUSIÓN: No se puede aplicar un constraint sin antes haber limpiado los datos. Limpia los datos (2.3.2) y funcionará
+
+ALTER TABLE productos
+	ADD CONSTRAINT fk_productos_categorias FOREIGN KEY(categoria_id) REFERENCES categorias(id)
+    ON UPDATE CASCADE ON DELETE RESTRICT;
+-- COMPROBAMOS: Saca el diagrama database->reverse
+
+-- 2.5.2. Consolidación de Precios: Crea precio_final y públalo usando COALESCE entre precio_oferta y precio
+SELECT * FROM productos;
+ALTER TABLE productos
+	ADD COLUMN precio_final DECIMAL(10,2) AFTER precio_oferta;
+SET SQL_SAFE_UPDATES = 0;
+SELECT * FROM productos;
+UPDATE productos
+ -- SET precio_final = 1ª opción: precio_oferta. Si es nulo, entonces 2ª opción: precio. Si es nulo, entonces 3ª opción: 99999999.99
+ -- SET precio_final = CASE WHEN ... THEN
+SET precio_final = COALESCE(precio_oferta, precio, 99999999.99);
+SET SQL_SAFE_UPDATES = 1;
+
