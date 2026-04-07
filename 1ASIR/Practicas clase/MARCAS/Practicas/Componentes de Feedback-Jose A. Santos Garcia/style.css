@@ -1,0 +1,149 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #aebcc8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.contenedor_formulario {
+    width: 500px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+.titulo {
+    background-color: #202d3d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.titulo h1 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.formulario {
+    padding: 30px;
+}
+
+.formulario h2 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.subtitulo {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 25px;
+}
+
+.rellenar {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formulario label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+input:required, select:required, textarea:required {
+    border-left: 3px solid #202d3d;
+}
+
+input[type="email"]:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+    background-color: #fdf2f2;
+}
+
+input[type="email"]:valid:not(:placeholder-shown) {
+    border-color: #2ecc71;
+}
+
+.recomendacion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.opciones_recomendacion label {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.apartado_email {
+    background-color: #202d3d;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.apartado_email label {
+    color: white;
+    
+}
+
+.apartado_email input {
+    width: 93%;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-env {
+    background-color: #0084fe;
+    color: white;
+}
+
+.btn-env:hover {
+    background-color: rgb(0, 68, 141);
+}
+
+.btn-can {
+    background-color: #94a3b8;
+    color: white;
+}
+
+.btn-can:hover {
+    background-color: #64748b;
+}

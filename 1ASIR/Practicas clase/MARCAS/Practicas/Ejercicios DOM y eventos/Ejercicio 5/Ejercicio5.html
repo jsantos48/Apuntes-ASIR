@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Menú Seleccionable</title>
+    <link rel="stylesheet" href="Ejercicio5.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="titulo">MENU SELECCIONABLE</div>
+        
+        <div class="menu">
+            <div class="option active" id="opt0">¿EL NÚMERO ES PAR?</div>
+            <div class="option" id="opt1">¿EL NÚMERO ES IMPAR?</div>
+            <div class="option" id="opt2">¿EL NÚMERO ES PRIMO?</div>
+            <div class="option" id="opt3">OBTENER DIVISORES</div>
+        </div>
+
+        <div class="controles">
+            <button class="flecha_btn" id="btnUp">
+                <span class="flecha_arriba">⬆</span>
+            </button>
+            <button class="flecha_btn" id="btnDown">
+                <span class="flecha_abajo">⬇</span>
+            </button>
+            
+            <input type="number" id="num" placeholder="1-100">
+            
+            <button id="btnCalcular">CALCULAR</button>
+        </div>
+
+        <div class="resultado_container">
+            <input type="text" id="resultado" readonly>
+        </div>
+    </div>
+    <script src="Ejercicio5.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Adivina el Número</title>
+<link rel="stylesheet" href="ejercicio6.css">
+</head>
+
+<body>
+
+<div class="contenedor">
+
+<div class="titulo">ADIVINA EL NÚMERO</div>
+
+<div class="panel">
+<label>Numero:</label>
+<input type="number" id="numero" min="0" max="100">
+<button onclick="jugar()">Jugar</button>
+
+<div id="resultado" class="resultado"></div>
+</div>
+
+<div class="intentos">
+INTENTOS REALIZADOS: <span id="contador">0</span>
+</div>
+
+<table>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+
+<tr id="tablaIntentos">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+</table>
+
+</div>
+
+<script src="ejercicio6.js"></script>
+
+</body>
+</html>

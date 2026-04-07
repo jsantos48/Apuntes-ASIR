@@ -1,0 +1,68 @@
+body {
+    background-color: rgba(0, 102, 255, 0.11);
+}
+
+.flex-container {
+    font-family: sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;        
+}
+
+.card.header,
+.card.chapter {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 25px;
+    width: 39.5%;                
+    box-shadow: 0 4px 10px black;
+    font-size: 12px;
+    
+}
+
+.card.text-block {
+    background: #ffffff;
+    border: 1px solid #d0d0d0;
+    border-radius: 15px;
+    padding: 25px;
+    width: 83%;                
+    box-shadow: 0 4px 10px black;
+}
+
+.card.text-block p {
+c
+}
+
+.card.header h1 {
+    color: rgb(1, 112, 209);
+    text-align: center;
+    font-size: 25px;
+}
+
+.card.chapter h2:first-of-type {
+    color: rgb(2, 83, 153);
+    font-size: 19px;
+}
+
+.card.chapter h2:last-of-type {
+    color: black;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+
+.card.header hr,
+.card.chapter hr {
+    border: 0.7px solid rgb(197, 197, 197);
+}
+
+.card.header .author {
+    text-align: center;
+    color: rgb(180, 180, 180);
+    font-size: 14px;
+    font-style: italic;
+}
+
