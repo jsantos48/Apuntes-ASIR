@@ -88,17 +88,190 @@ SET num_colegiado = TRIM(REPLACE(num_colegiado,'/','-'));
 SAVEPOINT ej2_estandarizacion;
 
 UPDATE medicos 
-SET num_colegiado = CONCAT(SUBSTRING(num_colegiado,1,3),'-',SUBSTRING(num_colegiado, 4, 2), '-', SUBSTRING(num_colegiado, 6, 4))
+SET num_colegiado = CONCAT(SUBSTRING(num_colegiado, 1, 3),'-',SUBSTRING(num_colegiado, 4, 2), '-', SUBSTRING(num_colegiado, 6, 4))
 WHERE num_colegiado REGEXP '^COL[0-9]{6}$';
 
 UPDATE medicos
 SET num_colegiado = CONCAT('COL-',num_colegiado)
 	WHERE num_colegiado REGEXP '^[0-9]{2}-[0-9]{4}$';
 
--- PREGUNTAR QUE SE HACE CON EL INV, SI ELIMINAR O MODIFICAR (MÁS PROBABLE).
+-- Inventamos una variante para el inventado
+UPDATE medicos
+SET num_colegiado = CONCAT('COL-', '99-', SUBSTRING(num_colegiado, 5, 4))
+	WHERE num_colegiado LIKE 'INV-%';
+
+-- Añadimos 0s para que cuumpla el requisito
+UPDATE medicos 
+SET num_colegiado = CONCAT(SUBSTRING(num_colegiado, 1, 7), '0', SUBSTRING(num_colegiado, 8, 4))
+	WHERE num_colegiado REGEXP '^COL-99-[0-9]{3}$';
+
+UPDATE medicos 
+SET num_colegiado = CONCAT(SUBSTRING(num_colegiado, 1, 7), '00', SUBSTRING(num_colegiado, 8, 4))
+	WHERE num_colegiado REGEXP '^COL-99-[0-9]{2}$';
+
+UPDATE medicos 
+SET num_colegiado = CONCAT(SUBSTRING(num_colegiado, 1, 7), '000', SUBSTRING(num_colegiado, 8, 4))
+	WHERE num_colegiado REGEXP '^COL-99-[0-9]{1}$';
+
 
 ROLLBACK TO ej2_estandarizacion;
+
 SET SQL_SAFE_UPDATES = 1;
+
 ALTER TABLE medicos
 	ADD CONSTRAINT chk_medicos_num_colegiado CHECK(num_colegiado REGEXP '^COL-[0-9]{2}-[0-9]{4}$');
+
+COMMIT;
     
+-- Ejercicio 3
+-- Vemos las especialidades de los médicos y las disponibles
+SELECT * 
+FROM medicos;
+
+SELECT * 
+FROM especialidades;
+
+-- Sustituimos la especialidad inexistente de los médicos 
+START TRANSACTION;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SAVEPOINT mod_id_especialidad;
+
+UPDATE medicos
+SET especialidad_id = (SELECT id FROM especialidades WHERE nombre LIKE 'Medicina General')
+	WHERE especialidad_id NOT IN (SELECT id FROM especialidades);
+
+ROLLBACK TO mod_id_especialidad;
+
+SAVEPOINT clave_foranea_medvisita;
+
+-- Vemos los errores de la tabla visitas, ya que haciendo el alter table directamente da error.
+-- El JOIN elimina los huérfanos del resultado; para encontrarlos debes quitar los JOIN y usar OR
+SELECT * FROM visitas;
+
+DELETE FROM visitas 
+	WHERE paciente_id NOT IN (SELECT id FROM pacientes);
+    
+DELETE FROM visitas
+	WHERE medico_id NOT IN (SELECT id FROM medicos);
+
+ALTER TABLE visitas 
+	ADD CONSTRAINT fk_visitas_medicos FOREIGN KEY (medico_id) REFERENCES medicos(id)
+	ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE visitas 
+	ADD CONSTRAINT fk_visitas_pacientes FOREIGN KEY (paciente_id) REFERENCES pacientes(id)
+	ON DELETE CASCADE ON UPDATE CASCADE;
+    
+ALTER TABLE medicos
+	ADD CONSTRAINT fk_medicos_especialidad FOREIGN KEY (especialidad_id) REFERENCES especialidades(id)
+	ON DELETE CASCADE ON UPDATE CASCADE;
+
+ROLLBACK TO clave_foranea_medvisita;
+
+SET SQL_SAFE_UPDATES = 1;
+
+-- Comprobamos
+SELECT * FROM visitas;
+
+COMMIT;
+
+-- Ejercicio 4
+-- Creamos la tabla "seguros_pacientes"
+START TRANSACTION;
+
+SAVEPOINT tabla_seguros;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM pacientes; 
+-- Creamos la tabla e insertamos los datos de pacientes
+CREATE TABLE seguros_pacientes (
+    paciente_id INT AUTO_INCREMENT,  
+    num_poliza VARCHAR(50),
+    estado_poliza VARCHAR(20) DEFAULT 'ACTIVA', 
+    CONSTRAINT pk_paciente_seguro PRIMARY KEY(paciente_id),
+    CONSTRAINT fk_seguros_pacientes FOREIGN KEY(paciente_id) 
+        REFERENCES pacientes(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+INSERT INTO seguros_pacientes (paciente_id, num_poliza)
+SELECT id, num_poliza
+FROM pacientes
+WHERE num_poliza IS NOT NULL;
+
+-- Comprobamos la nueva tabla
+SELECT * FROM seguros_pacientes;
+
+-- Borramos la columna de pacientes
+ALTER TABLE pacientes 
+DROP COLUMN num_poliza;
+
+-- Comprobamos si se ha borrado
+SELECT * FROM pacientes;
+
+SET SQL_SAFE_UPDATES = 1;
+
+ROLLBACK TO tabla_seguros;
+
+COMMIT;
+
+-- Ejercicio 5
+START TRANSACTION;
+
+SELECT * FROM visitas;
+
+EXPLAIN visitas;
+
+SAVEPOINT copago_visitas;
+
+SET SQL_SAFE_UPDATES = 0;
+
+ALTER TABLE visitas
+	ADD COLUMN copago_estimado DECIMAL(10,2);
+
+UPDATE visitas
+SET importe_sucio = TRIM(REPLACE(REPLACE(REPLACE(REPLACE(importe_sucio, ',', '.'),'EUR', ''), '€', ''), 'Gratis', '0.00'));
+
+UPDATE visitas
+SET copago_estimado = CAST(importe_sucio AS DECIMAL(10,2)) * 0.20;
+
+ALTER TABLE visitas
+	MODIFY copago_estimado DECIMAL (10,2) NOT NULL;
+    
+ALTER TABLE seguros_pacientes
+	MODIFY num_poliza VARCHAR(50) NOT NULL;
+
+ROLLBACK TO copago_visitas;
+
+SET SQL_SAFE_UPDATES = 1;
+
+COMMIT;
+
+-- Ejercicio 6
+START TRANSACTION;
+
+SELECT * FROM raw_import_visitas;
+
+SAVEPOINT procesado;
+
+INSERT IGNORE INTO pacientes (nombre_completo, nif, fecha_nacimiento)
+SELECT 
+    SUBSTRING_INDEX(raw_data, '|', 1),
+    SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 2), '|', -1),
+    SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 3), '|', -1)
+FROM raw_import_visitas;
+
+INSERT INTO visitas (paciente_id, medico_id, fecha_visita, importe_sucio)
+SELECT 
+    p.id, 
+    1,
+    NOW(), 
+    SUBSTRING_INDEX(raw_data, '|', -1)
+FROM raw_import_visitas r
+JOIN pacientes p ON p.nif = SUBSTRING_INDEX(SUBSTRING_INDEX(r.raw_data, '|', 2), '|', -1);
+
+ROLLBACK TO procesado;
+
+COMMIT;
