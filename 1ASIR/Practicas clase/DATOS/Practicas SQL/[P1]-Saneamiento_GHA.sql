@@ -1,5 +1,6 @@
 USE gha_analytics;
 
+-- ESCENARIO 1
 -- Ejercicio 1:
 -- Vemos los datos
 SELECT id, 
@@ -254,14 +255,21 @@ START TRANSACTION;
 
 SELECT * FROM raw_import_visitas;
 
+select * from pacientes;
+explain pacientes;
+
 SAVEPOINT procesado;
 
-INSERT IGNORE INTO pacientes (nombre_completo, nif, fecha_nacimiento)
+INSERT INTO pacientes (nif, nombre_completo, f_nacimiento)
 SELECT 
     SUBSTRING_INDEX(raw_data, '|', 1),
     SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 2), '|', -1),
     SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 3), '|', -1)
-FROM raw_import_visitas;
+FROM raw_import_visitas
+WHERE NOT EXISTS (
+	SELECT 1
+    FROM pacientes
+    WHERE pacientes.nif = SUBSTRING_INDEX(raw_data, '|', 1));
 
 INSERT INTO visitas (paciente_id, medico_id, fecha_visita, importe_sucio)
 SELECT 
@@ -273,5 +281,26 @@ FROM raw_import_visitas r
 JOIN pacientes p ON p.nif = SUBSTRING_INDEX(SUBSTRING_INDEX(r.raw_data, '|', 2), '|', -1);
 
 ROLLBACK TO procesado;
+
+COMMIT;
+
+
+-- ESCENARIO 2
+-- TABLA PACIENTES
+SELECT * FROM pacientes;
+
+START TRANSACTION;
+
+SAVEPOINT pacientes_mod;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT COUNT(*) FROM pacientes WHERE f_nacimiento NOT LIKE '__/__/____';
+UPDATE pacientes
+SET f_nacimiento = ;
+
+SET SQL_SAFE_UPDATES = 1;
+
+ROLLBACK TO visitas_mod;
 
 COMMIT;
