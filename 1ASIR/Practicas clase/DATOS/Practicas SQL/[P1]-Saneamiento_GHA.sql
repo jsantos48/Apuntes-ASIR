@@ -59,6 +59,7 @@ ALTER TABLE pacientes
 -- Modificamos la columna "nif" en la tabla "pacientes"
 ALTER TABLE pacientes 
 	MODIFY COLUMN nif VARCHAR(9) NOT NULL UNIQUE;
+show index from pacientes;
     
 -- Comprobamos que todo está en orden
 SELECT 
@@ -260,7 +261,8 @@ explain pacientes;
 
 SAVEPOINT procesado;
 
-INSERT INTO pacientes (nif, nombre_completo, f_nacimiento)
+-- Esta opción es válida, sin embargo, no es la mejor
+/* INSERT INTO pacientes (nif, nombre_completo, f_nacimiento)
 SELECT 
     SUBSTRING_INDEX(raw_data, '|', 1),
     SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 2), '|', -1),
@@ -270,6 +272,17 @@ WHERE NOT EXISTS (
 	SELECT 1
     FROM pacientes
     WHERE pacientes.nif = SUBSTRING_INDEX(raw_data, '|', 1));
+*/ 
+
+-- Esta opción es mejor, ya que me devuelve las columnas duplicadas aunque no las añada
+INSERT IGNORE INTO pacientes (nif, nombre_completo, f_nacimiento)
+SELECT 
+    SUBSTRING_INDEX(raw_data, '|', 1),
+    SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 2), '|', -1),
+    SUBSTRING_INDEX(SUBSTRING_INDEX(raw_data, '|', 3), '|', -1)
+FROM raw_import_visitas;
+
+SHOW INDEX FROM pacientes;
 
 INSERT INTO visitas (paciente_id, medico_id, fecha_visita, importe_sucio)
 SELECT 
