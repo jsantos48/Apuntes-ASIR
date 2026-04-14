@@ -1,0 +1,32 @@
+Copias de Seguridad:
+- Completo
+- Incremental
+- Diferencial
+
+Se almacena en binary_log
+
+COMANDOS:
+SHOW VARIABLES LIKE 'log_bin'; #muestra si esta activo el archivo "log_bin".
+
+SHOW BINARY LOGS; #muestra los logs cerrados, donde se han guardado los datos. El último esta abierto.
+
+SHOW MASTER STATUS; #muestra el archivo abierto.
+
+FLUSH LOGS; #cierra el último archivo y genera uno nuevo en el cual podemos trabajar.
+
+# Ver logs binarios en texto legible
+mysqlbinlog 
+    --read-from-remote-server 
+    --base64-output=DECODE-ROWS 
+    -v 
+    -u admin -p 
+    -h localhost 
+    binlog.000296
+
+Explicación:
+    '--read-from-remote-server' ver el contenido de los logs sin tener permisos de sudo
+    '-h localhost' al indicar que queremos leer en remote server, tenemos que darel al ip del remote server, en este caso es localhost
+    '--base64-output=DECODE-ROWS' 
+
+
+

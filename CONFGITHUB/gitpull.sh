@@ -26,3 +26,5 @@ else
     echo -e "${ROJO}❌ Error: No se encontró la carpeta .git${NC}"
 	exit 1
 fi
+
+read -p "Pulse ENTER para continuar..." cont

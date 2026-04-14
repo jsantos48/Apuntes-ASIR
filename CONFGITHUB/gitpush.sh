@@ -26,3 +26,5 @@ else
     echo "ERROR: No se detecta el repositorio Git en $ruta"
 	exit 1
 fi
+
+read -p "Pulse ENTER para continuar..." cont
