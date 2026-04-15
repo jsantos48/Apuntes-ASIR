@@ -1,0 +1,48 @@
+<!-- ============================================================ -->
+<!--            esquema.dtd — Catálogo de Videojuegos             -->
+<!-- ============================================================ -->
+
+<!-- === ELEMENTO RAÍZ === -->
+<!ELEMENT catalogo (juego+)>
+<!ATTLIST catalogo
+    nombre   CDATA  #REQUIRED
+    version  CDATA  #IMPLIED
+>
+
+<!-- === JUEGO === -->
+<!-- Cada juego contiene, en orden: título, descripción, desarrolladora, requisitos técnicos y modos de juego -->
+<!ELEMENT juego (titulo, descripcion, desarrolladora, requisitos_tecnicos, modos_de_juego)>
+<!ATTLIST juego
+    id      ID     #REQUIRED
+    genero  CDATA  #REQUIRED
+>
+
+<!-- === TÍTULO Y DESCRIPCIÓN === -->
+<!ELEMENT titulo      (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+
+<!-- === DESARROLLADORA === -->
+<!-- El publisher es opcional: puede que el desarrollador sea también el publisher -->
+<!ELEMENT desarrolladora (nombre, pais, publisher?)>
+<!ELEMENT nombre    (#PCDATA)>
+<!ELEMENT pais      (#PCDATA)>
+<!ELEMENT publisher (#PCDATA)>
+
+<!-- === REQUISITOS TÉCNICOS === -->
+<!-- Debe haber al menos una plataforma -->
+<!ELEMENT requisitos_tecnicos (anio_lanzamiento, plataforma+)>
+<!ELEMENT anio_lanzamiento (#PCDATA)>
+<!ELEMENT plataforma       (#PCDATA)>
+<!ATTLIST plataforma
+    tipo  CDATA  #REQUIRED
+>
+
+<!-- === MODOS DE JUEGO === -->
+<!-- Debe haber al menos un modo de juego -->
+<!ELEMENT modos_de_juego (modo+)>
+<!ELEMENT modo (nombre_modo, descripcion_modo)>
+<!ATTLIST modo
+    jugadores  CDATA  #REQUIRED
+>
+<!ELEMENT nombre_modo      (#PCDATA)>
+<!ELEMENT descripcion_modo (#PCDATA)>
