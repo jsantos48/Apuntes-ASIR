@@ -2,11 +2,14 @@ USE logistica_global;
 
 SHOW TABLES;
 
+-- TABLA INCIDENCIAS
 EXPLAIN incidencias;
 
 SELECT * FROM incidencias;
 
 START TRANSACTION;
+
+-- SANEAMIENTO DE LA FECHA
 
 SAVEPOINT incidencias_fecha;
 
@@ -31,10 +34,17 @@ SET SQL_SAFE_UPDATES = 1;
 
 ROLLBACK TO incidencias_fecha;
 
--- Tabla clientes
-select * from clientes;
+-- COMPROBAMOS
 
-savepoint fecha_alta_cliente;
+SELECT * FROM incidencias;
+
+COMMIT;
+
+-- TABLA CLIENTES
+SELECT * FROM clientes;
+
+-- FECHA DEL ALTA DE LOS CLIENTES
+SAVEPOINT fecha_alta_cliente;
 
 SET SQL_SAFE_UPDATES = 0;
 
@@ -52,6 +62,6 @@ SET fecha_alta_cliente = CASE
     WHEN fecha_alta_cliente LIKE '__-__-21' THEN DATE_FORMAT(STR_TO_DATE(fecha_alta_cliente, '%d-%m-%y'), '%Y-%m-%d')
     ELSE fecha_alta_cliente
 END;
-rollback to fecha_alta_cliente;
+ROLLBACK TO fecha_alta_cliente;
 
-select * from almacenes;
+SELECT * FROM almacenes;
