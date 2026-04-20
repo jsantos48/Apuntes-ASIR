@@ -309,8 +309,6 @@ SAVEPOINT pacientes_mod;
 SET SQL_SAFE_UPDATES = 0;
 
 SELECT COUNT(*) FROM pacientes WHERE f_nacimiento NOT LIKE '__/__/____';
-UPDATE pacientes
-SET f_nacimiento = ;
 
 SET SQL_SAFE_UPDATES = 1;
 
