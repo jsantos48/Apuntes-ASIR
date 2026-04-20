@@ -29,11 +29,12 @@ Explicación:
     '--base64-output=DECODE-ROWS' 
 
     mysqldump -u admin -p logistica_global > 00_copia_inicial.sql #para hacer una copia de seguridad completa
+
 cat 01_copia_incremental_a_martes_desde_el_lunes_completo.sql 02_copia_incremental_del_miercoles_desde_el_martes.sql > 03_diferencial_del_lunes_al_miercoles.sql #para hacer una copia de seguridad diferencial
 
 MYSQLDUMP = CREAR COPIA COMPLETA
 
-MSYQLBINLOG = CREAR INCREMENTAL (COMANDO GORDO, ARRIBA, MÁS CERRAR EL ARCHIVO DESEADO, ARRIBA)
+MSYQLBINLOG = CREAR COPIA INCREMENTAL (COMANDO GORDO, ARRIBA, MÁS CERRAR EL ARCHIVO DESEADO, ARRIBA)
 
-CAT INCREMENTAL1 INCREMENTAL2 > DIFERENCIAL
+CAT INCREMENTAL1 INCREMENTAL2 > DIFERENCIAL = CREA UNA COPIA DIFERENCIAL
 
