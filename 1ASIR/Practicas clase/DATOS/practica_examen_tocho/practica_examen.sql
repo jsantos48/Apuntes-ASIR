@@ -25,14 +25,18 @@ SET f_incidencia = CASE
     WHEN f_incidencia LIKE '__-__-____' THEN DATE_FORMAT(STR_TO_DATE(f_incidencia,'%d-%m-%Y'),'%Y-%m-%d')
     WHEN f_incidencia LIKE '26-__-__' THEN DATE_FORMAT(STR_TO_DATE(f_incidencia, '%y-%m-%d'), '%Y-%m-%d')
     WHEN f_incidencia LIKE '__-__-26' THEN DATE_FORMAT(STR_TO_DATE(f_incidencia, '%d-%m-%y'), '%Y-%m-%d')
-    ELSE f_incidencia
+    ELSE NULL
 END;
 
 DELETE FROM incidencias WHERE envio_id IS NULL;
 
 SET SQL_SAFE_UPDATES = 1;
 
-ROLLBACK TO incidencias_fecha;
+-- ROLLBACK TO incidencias_fecha;
+
+SAVEPOINT coste_asociado;
+
+-- ROLLBACK TO coste_asociado;
 
 -- COMPROBAMOS
 
@@ -62,6 +66,8 @@ SET fecha_alta_cliente = CASE
     WHEN fecha_alta_cliente LIKE '__-__-21' THEN DATE_FORMAT(STR_TO_DATE(fecha_alta_cliente, '%d-%m-%y'), '%Y-%m-%d')
     ELSE fecha_alta_cliente
 END;
-ROLLBACK TO fecha_alta_cliente;
+-- ROLLBACK TO fecha_alta_cliente;
 
 SELECT * FROM almacenes;
+
+SELECT SUBSTRING_INDEX(ubicacion_geografica,'|', 1) FROM almacenes;
