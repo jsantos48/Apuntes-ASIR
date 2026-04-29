@@ -1,0 +1,65 @@
+import sqlite3
+
+
+def set_up():
+    with sqlite3.connect('cafeteria.db') as conexion:
+        cursor = conexion.cursor()
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS producto (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nombre TEXT NOT NULL,
+                precio DECIMAL NOT NULL,
+                stock INTEGER NOT NULL)
+            """)
+        conexion.commit()
+        datos_iniciales = [
+            ("bocata bacon",1.60,10),
+            ("cafe",1.50,1000),
+            ("napolitanas chocolate",0.75,20)
+        ]
+        cursor.executemany("""
+            INSERT INTO producto (nombre, precio, stock) values (?,?,?)""",datos_iniciales)
+        conexion.commit()
+
+
+def hacer_venta(producto):
+    with sqlite3.connect('cafeteria.db') as conexion:
+        cursor = conexion.cursor()
+        cursor.execute(
+        """UPDATE producto SET stock = stock - ? WHERE nombre = ?""",(1,producto.lower())
+        )
+        conexion.commit()
+        if (cursor.rowcount>0):
+            cursor.execute(
+                """SELECT nombre, precio FROM producto WHERE nombre = ?""",(producto.lower(),)
+            )
+            productos = cursor.fetchall()
+            print(f"{productos[0][0]} : {productos[0][1]}€")
+        else:
+            print(f"Este producto no existe")
+
+class Producto:
+    def __init__(self,id, nombre, precio, stock):
+        self.id = id
+        self.nombre = nombre
+        self.precio = precio
+        self.stock = stock
+def buscar_id(id):
+    with sqlite3.connect('cafeteria.db') as conexion:
+        conexion.row_factory = sqlite3.Row
+        cursor = conexion.cursor()
+        cursor.execute("""
+        SELECT * FROM producto WHERE id = ?""",(id,))
+        producto = cursor.fetchone()
+        if producto is None:
+            return Producto(0,"no existe",0,0)
+        producto_objeto = Producto(
+            producto["id"],producto["nombre"], producto["precio"], producto["stock"])
+        return producto_objeto
+
+cafe = buscar_id(2)
+bocata = buscar_id(1)
+cosa = buscar_id(5)
+print(cafe.nombre)
+print(bocata.precio)
+print(cosa.nombre)
