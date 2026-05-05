@@ -134,3 +134,21 @@ if cur.fetchone()[0] == 0:
 
     enviar_agente(3, 4, "2024-11-01")
 
+print("Naves sin capitán asignado:", len(naves_sin_capitan()))
+for (nave,) in naves_sin_capitan():
+    print(f"   - {nave}")
+
+cur.execute("SELECT id, nombre FROM agentes")
+for id_agente, nombre in cur.fetchall():
+    historial = historial_agente(id_agente)
+    print(f"\nHistorial de {nombre}: {len(historial)} misión(es)")
+    for fecha, nave, exito, incidencias in historial:
+        estado = "✓" if exito else "✗"
+        inc = incidencias if incidencias else "Sin incidencias"
+        print(f"   {estado} {fecha} | {nave} | {inc}")
+
+fallidas = misiones_fallidas()
+print(f"\nMisiones fallidas registradas: {len(fallidas)}")
+for nave, agente, incidencia in fallidas:
+    print(f"   - {nave} | {agente} | Incidencia: {incidencia}")
+
