@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Formulario de preferencia</title>
+</head>
+<body>
+    <form>
+        <h1>Formulario de preferencia sobre bicicletas</h1>
+        <p>Este formulario permite registrar sus preferencias sobre diferentes tipos de bicicletas.</p>
+
+    
+        <label for="nombre_cliente">Nombre del cliente:</label>
+        <input type="text" name="nombre_cliente" id="nombre_cliente">
+        <br><br>
+
+        <label for="apellido_cliente">Apellido del cliente:</label>
+        <input type="text" name="apellido_cliente" id="apellido_cliente">
+        <br><br>
+
+        <label for="direccion_cliente">Dirección:</label>
+        <input type="text" name="direccion_cliente" id="direccion_cliente">
+        <br><br>
+
+        <label for="email_cliente">Correo electrónico:</label>
+        <input type="email" name="email_cliente" id="email_cliente">
+        <br><br>
+
+        <label for="telefono_cliente">Teléfono:</label>
+        <input type="tel" name="telefono_cliente" id="telefono_cliente">
+        <br><br>
+
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="date" name="fecha_nacimiento" id="fecha_nacimiento">
+        <br><br>
+
+        <label for="sexo_cliente">Sexo:</label>
+        <input type="radio" name="sexo_cliente" id="masculino" value="masculino">
+        <label for="masculino">Masculino</label>
+
+        <input type="radio" name="sexo_cliente" id="femenino" value="femenino">
+        <label for="femenino">Femenino</label>
+        <br><br>
+
+        <label for="nueva_vieja_bicileta">¿Prefiere una bicicleta nueva o usada?</label>
+        <select name="nueva_vieja_bicileta" id="nueva_vieja_bicileta">
+            <option value="nueva">Nueva</option>
+            <option value="usada">Usada</option>
+        </select>
+        <br><br>
+
+        <label for="comentarios">Comentarios adicionales:</label><br>
+        <textarea name="comentarios" id="comentarios" rows="4" cols="50"></textarea>
+        <br><br>
+
+        <input type="submit" value="Enviar">
+        <br><br>
+    </form>
+    <ul>
+        <li><a href="index.html">Volver al inicio</a></li>
+        <li><a href="bicicletas.html">Ver bicicletas</a></li>
+        <li><a href="formulario.html">Formulario</a></li>
+    </ul>
+</body>
+</html>
