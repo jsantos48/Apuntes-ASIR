@@ -1,60 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Con CSS</title>
+    <title>Horario ASIR 2</title>
     <link rel="stylesheet" href="horario2.css">
 </head>
 <body>
 
 <div class="horario">
-
     <div class="titulo">ASIR 2</div>
 
-    <div class="cabecera"></div>
-    <div class="cabecera">Lunes</div>
-    <div class="cabecera">Martes</div>
-    <div class="cabecera">Miércoles</div>
-    <div class="cabecera">Jueves</div>
-    <div class="cabecera">Viernes</div>
+    <div class="cabecera" style="grid-column: 1; grid-row: 2;"></div>
+    <div class="cabecera" style="grid-column: 2; grid-row: 2;">Lunes</div>
+    <div class="cabecera" style="grid-column: 3; grid-row: 2;">Martes</div>
+    <div class="cabecera" style="grid-column: 4; grid-row: 2;">Miércoles</div>
+    <div class="cabecera" style="grid-column: 5; grid-row: 2;">Jueves</div>
+    <div class="cabecera" style="grid-column: 6; grid-row: 2;">Viernes</div>
 
-    <div class="hora">8:30 - 9:20</div>
-    <div class="asignatura lunes">Inglés profesional I</div>
-    <div class="asignatura martes" style="grid-row: 3 / 5;">Administración de sistemas</div>
-    <div class="asignatura miercoles" style="grid-row: 3 / 6;">Servicios de red e Internet</div>
-    <div class="asignatura jueves" style="grid-row: 3 / 6;">Administración de bases de datos</div>
-    <div class="asignatura viernes">Administración de sistemas</div>
+    <div class="hora" style="grid-column: 1; grid-row: 3;">8:30 - 9:20</div>
+    <div class="asignatura" style="grid-column: 2; grid-row: 3;">Inglés profesional I</div>
+    <div class="asignatura " style="grid-column: 3; grid-row: 3 / 5;">Administración de sistemas</div>
+    <div class="asignatura" style="grid-column: 4; grid-row: 3 / 6;">Servicios de red e Internet</div>
+    <div class="asignatura" style="grid-column: 5; grid-row: 3 / 6;">Administración de bases de datos</div>
+    <div class="asignatura" style="grid-column: 6; grid-row: 3;">Administración de sistemas</div>
 
-    <div class="hora">9:25 - 10:15</div>
-    <div class="asignatura lunes">Digitalización</div>
-    <div class="asignatura viernes">Inglés profesional I</div>
+    <div class="hora" style="grid-column: 1; grid-row: 4;">9:25 - 10:15</div>
+    <div class="asignatura" style="grid-column: 2; grid-row: 4;">Digitalización</div>
+    <div class="asignatura" style="grid-column: 6; grid-row: 4;">Inglés profesional I</div>
 
-    <div class="hora">10:20 - 11:10</div>
-    <div class="asignatura lunes">Administración de sistemas</div>
-    <div class="asignatura martes">Sostenibilidad</div>
-    <div class="asignatura viernes">Arquitectura en la nube</div>
+    <div class="hora" style="grid-column: 1; grid-row: 5;">10:20 - 11:10</div>
+    <div class="asignatura" style="grid-column: 2; grid-row: 5;">Administración de sistemas</div>
+    <div class="asignatura" style="grid-column: 3; grid-row: 5;">Sostenibilidad</div>
+    <div class="asignatura" style="grid-column: 6; grid-row: 5;">Arquitectura en la nube</div>
 
-    <div class="recreo">RECREO</div>
+    <div class="hora" style="grid-column: 1; grid-row: 6;">11:10 - 11:30</div>
+    <div class="recreo" style="grid-column: 2 / 7; grid-row: 6;">RECREO</div>
 
-    <div class="hora">11:40 - 12:30</div>
-    <div class="asignatura lunes">Administración de sistemas</div>
-    <div class="asignatura martes">Itinerario personal</div>
-    <div class="asignatura miercoles" style="grid-row: 8 / 11;">Seguridad y alta disponibilidad</div>
-    <div class="asignatura jueves" style="grid-row: 8 / 10;">Seguridad y alta disponibilidad</div>
-    <div class="asignatura viernes" style="grid-row: 8 / 10;">Arquitectura en la nube</div>
+    <div class="hora" style="grid-column: 1; grid-row: 7;">11:40 - 12:30</div>
+    <div class="asignatura" style="grid-column: 2; grid-row: 7;">Administración de sistemas</div>
+    <div class="asignatura" style="grid-column: 3; grid-row: 7;">Itinerario personal</div>
+    <div class="asignatura" style="grid-column: 4; grid-row: 7 / 10;">Seguridad y alta disponibilidad</div>
+    <div class="asignatura" style="grid-column: 5; grid-row: 7 / 9;">Seguridad y alta disponibilidad</div>
+    <div class="asignatura" style="grid-column: 6; grid-row: 7 / 9;">Arquitectura en la nube</div>
 
-    <div class="hora">12:35 - 13:25</div>
-    <div class="asignatura lunes" style="grid-row: 9 / 11;">Servicios de red e Internet</div>
-    <div class="asignatura martes" style="grid-row: 9 / 11;">Implantación de aplicaciones</div>
-    <div class="asignatura jueves">Itinerario personal</div>
-
-    <div class="hora">13:30 - 14:20</div>
-    <div class="asignatura jueves">Itinerario personal</div>
-    <div class="asignatura viernes">Implantación de aplicaciones</div>
-
+    <div class="hora" style="grid-column: 1; grid-row: 8;">12:35 - 13:25</div>
+    <div class="asignatura" style="grid-column: 2; grid-row: 8 / 10;">Servicios de red e Internet</div>
+    <div class="asignatura" style="grid-column: 3; grid-row: 8 / 10;">Implantación de aplicaciones</div>
+    <div class="asignatura jueves" style="grid-column: 5; grid-row: 9;">Itinerario personal</div>
+    
+    <div class="hora" style="grid-column: 1; grid-row: 9;">13:30 - 14:20</div>
+    <div class="asignatura" style="grid-column: 6; grid-row: 9;">Implantación de aplicaciones</div>
 </div>
-
 </body>
 </html>
