@@ -7,7 +7,7 @@ while true
 do
     read -p "Introduce un número (o esternocleidomastoideo para terminar): " numero
 
-    if [ "$numero" = "esternocleidomastoideo" ]
+    if [ "$numero" == "esternocleidomastoideo" ]
     then
         break
     fi
