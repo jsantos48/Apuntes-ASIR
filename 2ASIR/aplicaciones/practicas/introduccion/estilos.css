@@ -16,3 +16,16 @@ ul{
     list-style-type: none;
     text-align: center;
 }
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.tarjeta-bici img {
+    width: 300px; 
+    height: 200px;
+}
