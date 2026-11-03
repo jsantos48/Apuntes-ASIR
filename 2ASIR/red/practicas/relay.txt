@@ -1,0 +1,103 @@
+    1  sudo poweroff
+    2  ip a
+    3  cd /etc/netplan
+    4  ls
+    5  sudo cat 50-cloud-init.yaml 
+    6  sudo dpkg-reconfigure cloud-ini
+    7  sudo touch /etc/cloud/cloud-init.disabled
+    8  sudo apt-get purge cloud-init
+    9  sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
+   10  sudo reboot
+   11  sudo apt-get install iputils-ping traceroute dnsutils iptables nano nmap
+   12  sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+   13  systemctl disable systemd-networkd-wait-online.service
+   14  systemctl mask systemd-networkd-wait-online.service
+   15  sudo reboot
+   16  cd /etc/netplan
+   17  ls
+   18  sudo nano 50-cloud-init.yaml 
+   19  sudo reboot
+   20  ip a
+   21  sudo poweroff
+   22  sudo apt-get update
+   23  sudo apt-get upgrade
+   24  sudo reboot
+   25  sudo shutdown now
+   26  sudo poweroff
+   27  ip a
+   28  sudo nano /etc/hostname 
+   29  sudo nano /etc/hosts
+   30  sudo reboot
+   31  exit
+   32  ip a
+   33  sudo nano /etc/netplan/50-cloud-init.yaml 
+   34  sudo netplan apply
+   35  sudo apt-get install isc-dhcp-relay
+   36  ping www.google.es
+   37  sudo nano /etc/netplan/50-cloud-init.yaml 
+   38  ping www.google.es
+   39  ping 192.168.100.1
+   40  sudo nano /etc/netplan/50-cloud-init.yaml 
+   41  sudo poweroff
+   42  ip a
+   43  ping google.com
+   44  sudo nano /etc/netplan/50-cloud-init.yaml 
+   45  history
+   46  sudo nano /etc/netplan/50-cloud-init.yaml 
+   47  ping google.com
+   48  sudo nano /etc/netplan/50-cloud-init.yaml 
+   49  traceroutes 8.8.8.8
+   50  traceroute 8.8.8.8
+   51  sudo nano /etc/netplan/50-cloud-init.yaml 
+   52  sudo poweroff
+   53  cd /etc/default/
+   54  ls
+   55  cd 
+   56  history
+   57  clear
+   58  sudo poweroff
+   59  history
+   60  cd /etc/default/
+   61  ls
+   62  cd
+   63  history
+   64  sudo nano /etc/dhcp.conf
+   65  sudo nano /etc/dhcp/dhcp.conf
+   66  sudo nano /etc/dhcp/dhcpd.conf
+   67  cd /etc/default/
+   68  ls
+   69  cd
+   70  ls
+   71  sudo apt-get install isc-dhcp-relay
+   72  sudo poweroff
+   73  exit
+   74  clear
+   75  history
+   76  sudo nano /etc/default/isc-dhcp-serve
+   77  ls /etc/default/
+   78  sudo systemctl status isc-dhcp-relay
+   79  sudo apt update
+   80  clear
+   81  sudo apt install isc-dhcp-relay -y
+   82  reboot
+   83  sudo reboot
+   84  clear
+   85  sudo apt install isc-dhcp-relay
+   86  sudo apt install isc-dhcp-relay -y
+   87  history
+   88  sudo nano /etc/default/isc-dhcp-relay
+   89  sudo systemctl restart isc-dhcp-relay
+   90  sudo systemctl status isc-dhcp-relay
+   91  sudo nano /etc/netplan/50-cloud-init.yaml 
+   92  sudo netplan apply
+   93  sudo nano /etc/default/isc-dhcp-relay
+   94  ip a enp0s8
+   95  ip address enp0s8
+   96  ip address help
+   97  clear
+   98  ip address 
+   99  ip address | grep enp0s8
+  100  sudo poweroff
+  101  +
+  102  clear
+  103  history

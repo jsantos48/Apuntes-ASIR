@@ -1,0 +1,214 @@
+    1  sudo poweroff
+    2  ip a
+    3  cd /etc/netplan
+    4  ls
+    5  sudo cat 50-cloud-init.yaml 
+    6  sudo dpkg-reconfigure cloud-ini
+    7  sudo touch /etc/cloud/cloud-init.disabled
+    8  sudo apt-get purge cloud-init
+    9  sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
+   10  sudo reboot
+   11  sudo apt-get install iputils-ping traceroute dnsutils iptables nano nmap
+   12  sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+   13  systemctl disable systemd-networkd-wait-online.service
+   14  systemctl mask systemd-networkd-wait-online.service
+   15  sudo reboot
+   16  cd /etc/netplan
+   17  ls
+   18  sudo nano 50-cloud-init.yaml 
+   19  sudo reboot
+   20  ip a
+   21  sudo poweroff
+   22  sudo apt-get update
+   23  sudo apt-get upgrade
+   24  sudo reboot
+   25  sudo shutdown now
+   26  ip a
+   27  sudo nano /etc/hostname 
+   28  sudo nano /etc/hosts
+   29  sudo reboot
+   30  sudo cat /etc/shadow
+   31  cd /etc/ssh/
+   32  ls
+   33  cat ssh_host_ecdsa_key.pub 
+   34  cd ~
+   35  sudo nano /etc/hosts
+   36  sudo nano /etc/netplan/50-cloud-init.yaml 
+   37  sudo netplan apply
+   38  ip a
+   39  sudo nano /etc/netplan/50-cloud-init.yaml 
+   40  ping 10.0.2.1
+   41  ping 10.0.1.1
+   42  sudo nano /etc/netplan/50-cloud-init.yaml 
+   43  reboot
+   44  sudo reboot
+   45  sudo nano /etc/netplan/50-cloud-init.yaml 
+   46  sudo netplan apply
+   47  sudo nano /etc/netplan/50-cloud-init.yaml 
+   48  sudo sysctl -w net.ipv4.ip_forward=1
+   49  sudo netplan apply
+   50  ping 192.168.56.101/24
+   51  ping 192.168.56.101
+   52  ip a
+   53  ping 10.0.1.1
+   54  ping 10.0.2.2
+   55  ping 10.0.3.2
+   56  ping 10.0.5.2
+   57  ping 10.0.6.2
+   58  sudo sysctl -w net.ipv4.ip_forward=1
+   59  exit
+   60  ip a
+   61  ping 8.8.8.8
+   62  ip a
+   63  sudo nano /etc/sysctl.conf
+   64  sudo netplan apply
+   65  ping 8.8.8.8
+   66  sudo nano /etc/netplan/50-cloud-init.yaml 
+   67  ping 1.0.1.1
+   68  ping 10.0.1.1
+   69  sudo poweroff 
+   70  ip a
+   71  sudo nano /etc/netplan/50-cloud-init.yaml 
+   72  ping 10.0.1.1
+   73  ping 8.8.8.8
+   74  ping 10.0.1.1
+   75  ping www.google.es
+   76  sudo nano /etc/netplan/50-cloud-init.yaml 
+   77  sudo poweroff
+   78  sudo nano /etc/netplan/50-cloud-init.yaml 
+   79  sudo netplan apply
+   80  ping 8.8.8.8
+   81  ping www.google.es
+   82  sudo nano /etc/netplan/50-cloud-init.yaml 
+   83  ping 8.8.8.8
+   84  ping www.google.es
+   85  sudo poweroff
+   86  sudo nano /etc/netplan/50-cloud-init.yaml 
+   87  sudo iptables -t nat -L -nv
+   88  sudo shutdown now
+   89  ping www.google.es
+   90  sudo poweroff
+   91  ip a
+   92  sudo apt-get install isc-dhcp-server
+   93  sudo sysctl status isc-dhcp-server
+   94  sudo systemctl status isc-dhcp-server
+   95  cd /etc/default/
+   96  sudo nano /isc-dhcp-server
+   97  ls
+   98  sudo nano isc-dhcp-server
+   99  sudo systemctl restart isc-dhcp-server 
+  100  sudo systemctl status isc-dhcp-server
+  101  cd ../dhcp
+  102  sudo nano dhcpd.conf 
+  103  sudo systemctl status isc-dhcp-server
+  104  sudo nano dhcpd.conf 
+  105  sudo systemctl restart isc-dhcp-server 
+  106  sudo systemctl status isc-dhcp-server
+  107  sudo nano dhcpd.conf 
+  108  ssh alumno@192.168.61.3
+  109  sudo nano /etc/netplan/50-cloud-init.yaml 
+  110  sudo nano dhcpd.conf 
+  111  sudo systemctl restart isc-dhcp-server 
+  112  sudo systemctl status isc-dhcp-server
+  113  cd
+  114  sudo nano /etc/default/isc-dhcp-server 
+  115  sudo nano /etc/dhcp/dhcpd.conf 
+  116  sudo systemctl restart isc-dhcp-server 
+  117  sudo systemctl status isc-dhcp-server
+  118  sudo nano /etc/default/isc-dhcp-server 
+  119  sudo nano /etc/dhcp/dhcpd.conf 
+  120  sudo systemctl restart isc-dhcp-server 
+  121  sudo systemctl status isc-dhcp-server
+  122  sudo journalctl -xeu isc-dhcp-server
+  123  sudo nano /etc/dhcp/dhcpd.conf 
+  124  sudo nano /etc/netplan/50-cloud-init.yaml 
+  125  sudo netplan apply
+  126  sudo nano /etc/netplan/50-cloud-init.yaml 
+  127  sudo netplan apply
+  128  sudo systemctl restart isc-dhcp-server 
+  129  sudo systemctl status isc-dhcp-server
+  130  sudo nano /etc/dhcp/dhcpd.conf 
+  131  sudo nano /etc/default/isc-dhcp-server 
+  132  sudo systemctl restart isc-dhcp-server 
+  133  sudo systemctl status isc-dhcp-server
+  134  sudo nano /etc/dhcp/dhcpd.conf 
+  135  sudo systemctl restart isc-dhcp-server 
+  136  sudo systemctl status isc-dhcp-server
+  137  sudo nano /etc/dhcp/dhcpd.conf 
+  138  sudo systemctl restart isc-dhcp-server 
+  139  sudo systemctl status isc-dhcp-server
+  140  sudo nano /etc/netplan/50-cloud-init.yaml 
+  141  sudo netplan apply
+  142  ip a
+  143  sudo systemctl status isc-dhcp-server
+  144  sudo nano /etc/dhcp/dhcpd.conf 
+  145  ip a
+  146  sudo nano /etc/dhcp/dhcpd.conf 
+  147  sudo nano /etc/netplan/50-cloud-init.yaml 
+  148  sudo systemctl restart isc-dhcp-server 
+  149  sudo systemctl status isc-dhcp-server 
+  150  sudo nano /etc/dhcp/dhcpd.conf 
+  151  sudo nano /etc/default/isc-dhcp-server 
+  152  sudo systemctl restart isc-dhcp-server 
+  153  sudo systemctl status isc-dhcp-server 
+  154  sudo nano /etc/dhcp/dhcpd.conf 
+  155  sudo nano /etc/netplan/50-cloud-init.yaml 
+  156  sudo poweroff
+  157  ping google.com
+  158  ip a
+  159  sudo nano /etc/netplan/50-cloud-init.yaml 
+  160  sudo nano /etc/dhcp/dhcpd.conf 
+  161  ip a
+  162  sudo iptables -t nat -L -nv
+  163  sudo nano /etc/netplan/50-cloud-init.yaml 
+  164  find ~/*.leases
+  165  find ~/*.lease
+  166  ls 
+  167  ls ..
+  168  ls ../..
+  169  ls /var/
+  170  ls /var/lib
+  171  ls /var/lib/dhcp
+  172  cat /var/lib/dhcp/dhcpd.leases
+  173  sudo poweroff
+  174  sudo nano /etc/default/isc-dhcp-server 
+  175  ping google.com
+  176  ME SU
+  177  clear
+  178  sudo nano efabian\ paptah
+  179  cat efabian\ paptah
+  180  rm -rf efabian\ paptah 
+  181  ls
+  182  sudo nano /etc/default/isc-dhcp-server 
+  183  cd /etc/default/
+  184  ls
+  185  cd
+  186  sudo nano /etc/default/isc-dhcp-server 
+  187  sudo nano /etc/netplan/50-cloud-init.yaml 
+  188  sudo poweroff
+  189  clear
+  190  history
+  191  sudo nano /etc/default/isc-dhcp-server 
+  192  sudo nano /etc/netplan/50-cloud-init.yaml 
+  193  sudo nano /etc/default/isc-dhcp-server
+  194  ip a
+  195  sudo nano /etc/default/isc-dhcp-server
+  196  history
+  197  sudo nano /etc/default/isc-dhcp-server
+  198  sudo systemctl status isc-dhcp-server 
+  199  sudo nano /etc/netplan/50-cloud-init.yaml 
+  200  sudo nano /etc/dhcp/dhcpd.conf 
+  201  sudo nano /etc/dhcpcd.conf 
+  202  sudo nano /etc/dhcp/dhcpd.conf 
+  203  cat /var/lib/dhcp/dhcpd.leases
+  204  history
+  205  sudo nano /etc/dhcp/dhcpd.conf
+  206  sudo nano /etc/default/isc-dhcp-server
+  207  sudo nano /etc/netplan/50-cloud-init.yaml 
+  208  sudo nano /etc/default/isc-dhcp-server
+  209  sudo nano /etc/netplan/50-cloud-init.yaml 
+  210  sudo nano /etc/dhcp/dhcpd.conf
+  211  sudo nano /etc/default/isc-dhcp-server
+  212  sudo poweroff
+  213  clear
+  214  history
