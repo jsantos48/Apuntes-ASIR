@@ -1,0 +1,3 @@
+docker network create --driver bridge --subnet 172.30.0.0/24 --gateway 172.30.0.1 kea-internal
+
+docker run -d --name kea-dhcp-alpine --restart unless-stopped --network kea-internal --ip 172.30.0.10 -e DHCP4_SERVER=true -e DHCP6_SERVER=false -v $(pwd)/Documentos/Dockers/kea-dhcp-redinterna/kea-dhcp4.conf:/etc/kea/kea-dhcp4.conf shourai/kea-dhcp
